@@ -1,5 +1,6 @@
 import React from "react";
 
+import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 // Root Component
@@ -26,8 +27,14 @@ function App() {
     },
   ];
 
+  function addExpenseHandler(expenseData) {
+    const expense = expenseData;
+    console.log(expense)
+  }
+
   return (
     <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
