@@ -4,7 +4,7 @@ import "./ExpenseDate.css"
 
 function ExpenseDate(props) {
   const year = props.date.getFullYear();
-  const month = props.date.getMonth();
+  const month = props.date.getMonth() + 1;
   const day = props.date.getDate();
 
   return (
