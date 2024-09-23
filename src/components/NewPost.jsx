@@ -29,7 +29,7 @@ function NewPost({ onCancel }) {
 
   return (
     <form className={classes.form} onSubmit={submitForm}>
-      <p className={classes["new-post"]}>New Post</p>
+      <h2>New Post</h2>
       <p>
         <label htmlFor="author">Author</label>
         <input type="text" id="author" required onChange={updateAuthor} />
