@@ -5,14 +5,9 @@ import Post from "./Post";
 import NewPost from "./NewPost";
 import classes from "./Posts.module.css";
 
-function Posts() {
-  const [modalIsVisible, setModalIsVisible] = useState(true);
+function Posts({ modalIsVisible, onStopPost }) {
   const [author, setAuthor] = useState("New Author");
   const [content, setContent] = useState("New Content");
-
-  function hideModal() {
-    setModalIsVisible(false);
-  }
 
   function updateAuthor(event) {
     setAuthor(event.target.value);
@@ -25,7 +20,7 @@ function Posts() {
   return (
     <>
       {modalIsVisible && (
-        <Modal onClose={hideModal}>
+        <Modal onClose={onStopPost}>
           <NewPost
             onChangeAuthor={updateAuthor}
             onChangeContent={updateContent}
