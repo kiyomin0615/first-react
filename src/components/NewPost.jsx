@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import classes from "./NewPost.module.css";
 
-function NewPost({ onCancel }) {
+function NewPost({ onCancel, onSubmit }) {
   const [author, setAuthor] = useState("New Author");
   const [content, setContent] = useState("New Content");
 
@@ -22,8 +22,7 @@ function NewPost({ onCancel }) {
       content: content
     }
 
-    console.log(newPost);
-
+    onSubmit(newPost); // add new post
     onCancel(); // hide modal
   }
 
