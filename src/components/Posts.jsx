@@ -7,12 +7,18 @@ import classes from "./Posts.module.css";
 
 function Posts({ modalIsVisible, onStopPost }) {
   const [posts, setPosts] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     async function getAllPosts() {
-      const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/posts`);
+      setIsFetching(true);
+
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_BASE_URL}/posts`
+      );
       const posts = await response.json();
       setPosts(posts);
+      setIsFetching(false);
     }
 
     getAllPosts();
@@ -38,7 +44,7 @@ function Posts({ modalIsVisible, onStopPost }) {
           <NewPost onCancel={onStopPost} onSubmit={addNewPost} />
         </Modal>
       )}
-      {posts.length > 0 && (
+      {!isFetching && posts.length > 0 && (
         <ul className={classes.posts}>
           {posts.map((post) => {
             return (
@@ -51,10 +57,15 @@ function Posts({ modalIsVisible, onStopPost }) {
           })}
         </ul>
       )}
-      {posts.length === 0 && (
+      {!isFetching && posts.length === 0 && (
         <div style={{ textAlign: "center", color: "white" }}>
           <h2>No Posts</h2>
           <p>Add new posts.</p>
+        </div>
+      )}
+      {isFetching && (
+        <div style={{ textAlign: "center", color: "white" }}>
+          <p>Loading...</p>
         </div>
       )}
     </>
