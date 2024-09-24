@@ -34,6 +34,7 @@
 .actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -51,10 +52,13 @@
   background-color: #23014a;
 }
 
-.actions button[type="button"] {
+.actions a {
   background-color: transparent;
+  text-decoration: none;
+  color: #e5d5f7;
+  margin-right: 0.25rem;
 }
 
-.actions button[type="button"]:hover {
+.actions a:hover {
   color: #d1bee6
 }

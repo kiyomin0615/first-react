@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 
-import Modal from "./Modal";
 import Post from "./Post";
-import NewPost from "./NewPost";
-import classes from "./Posts.module.css";
+import classes from "./PostList.module.css";
 
-function Posts({ modalIsVisible, onStopPost }) {
+function PostList() {
   const [posts, setPosts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -39,11 +37,6 @@ function Posts({ modalIsVisible, onStopPost }) {
 
   return (
     <>
-      {modalIsVisible && (
-        <Modal onClose={onStopPost}>
-          <NewPost onCancel={onStopPost} onSubmit={addNewPost} />
-        </Modal>
-      )}
       {!isFetching && posts.length > 0 && (
         <ul className={classes.posts}>
           {posts.map((post) => {
@@ -72,4 +65,4 @@ function Posts({ modalIsVisible, onStopPost }) {
   );
 }
 
-export default Posts;
+export default PostList;
