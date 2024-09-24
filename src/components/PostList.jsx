@@ -14,7 +14,8 @@ function PostList() {
           {posts.map((post) => {
             return (
               <Post
-                key={post.author + post.content}
+                key={post._id}
+                id={post._id}
                 author={post.author}
                 content={post.content}
               />
