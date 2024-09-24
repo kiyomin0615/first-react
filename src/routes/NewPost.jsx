@@ -1,12 +1,15 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import classes from "./NewPost.module.css";
 import Modal from "../components/Modal";
+import Context from "../contexts/context";
+import classes from "./NewPost.module.css";
 
-function NewPost({ onSubmit }) {
+function NewPost() {
   const [author, setAuthor] = useState("New Author");
   const [content, setContent] = useState("New Content");
+  const { addNewPost } = useContext(Context);
+  const navigate = useNavigate();
 
   function updateAuthor(event) {
     setAuthor(event.target.value);
@@ -24,8 +27,8 @@ function NewPost({ onSubmit }) {
       content: content,
     };
 
-    onSubmit(newPost); // add new post
-    onCancel(); // hide modal
+    addNewPost(newPost); // add new post
+    navigate("/"); // hide modal
   }
 
   return (
