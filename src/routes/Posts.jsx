@@ -12,9 +12,7 @@ function Posts() {
     async function getAllPosts() {
       setIsFetching(true);
 
-      const response = await fetch(
-        `${import.meta.env.VITE_APP_BASE_URL}/posts`
-      );
+      const response = await fetch("http://localhost:8080/posts");
       const posts = await response.json();
       setPosts(posts);
       setIsFetching(false);
@@ -24,7 +22,7 @@ function Posts() {
   }, []);
 
   function addNewPost(newPost) {
-    fetch(`${import.meta.env.VITE_APP_BASE_URL}/posts`, {
+    fetch("http://localhost:8080/posts", {
       method: "POST",
       body: JSON.stringify(newPost),
       headers: {

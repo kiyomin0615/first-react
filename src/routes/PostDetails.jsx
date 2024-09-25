@@ -11,7 +11,7 @@ function PostDetails() {
   useEffect(() => {
     async function getPost() {
       const response = await fetch(
-        `${import.meta.env.VITE_APP_BASE_URL}/posts/${id}`
+        `http://localhost:8080/posts/${id}`
       );
       const data = await response.json();
       setPost(data);
